@@ -1,0 +1,14 @@
+{#{% extends 'baseBack.html.twig' %}#}
+
+
+{% block title %}Modifier Oeuvre{% endblock %}
+
+{% block body %}
+    <h1>Modifier Oeuvre</h1>
+
+    {{ include('oeuvre/_formfront.html.twig', {'button_label': 'Modifier'}) }}
+
+    <a href="{{ path('app_oeuvre_index') }}">retour vers la liste</a>
+
+    {{ include('oeuvre/_delete_form.html.twig') }}
+{% endblock %}

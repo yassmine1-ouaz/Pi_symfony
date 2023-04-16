@@ -1,0 +1,13 @@
+
+
+{% block title %}Ajouter Oeuvre{% endblock %}
+
+{% block body %}
+    <h1>Ajouter Oeuvre</h1>
+
+    {{ include('oeuvre/_formfront.html.twig') }}
+
+    
+    <a href="{{ path('app_oeuvre_index') }}">back to list</a>
+ 
+{% endblock %}

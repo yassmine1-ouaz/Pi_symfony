@@ -1,0 +1,59 @@
+{% extends 'baseFront.html.twig' %}
+{% block title %}
+  Home
+{% endblock %}
+
+{% block body %}
+
+<div class="container">
+
+    <div class="row">
+   
+    <h1>Oeuvres</h1> 
+    <a href="{{ path('app_oeuvre_new') }}">Ajouter Oeuvre</a>
+
+     <header class="major">
+    <script type="text/javascript">
+                    function imprimer_page(){
+                        window.print();
+                    }
+                </script> 
+                 <form>
+                            <input id="impression" class="js-programmatic-set-val btn btn-outline-primary mr-1 mb-1s" name="impression" type="button" onclick="imprimer_page()" value="Print this page" />
+                        </form>
+                        </header>
+        {% for oeuvre in oeuvres %}
+        <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+                <div class="card-body">
+                
+               
+                {% if oeuvre.image %}
+                 <td><img src="{{ asset('uploads/'~ oeuvre.image ) }}"  width="350" height="200"></td>
+                    {% else %}
+                        <td><img src="{{ asset('uploads/'~ "Not found.jpg" ) }}" width="250" height="150"></td>
+                    {% endif %}
+                    <p class="card-title">{{ oeuvre.titreOeuvre }}</p>
+                    <p class="card-text">{{ oeuvre.prixOeuvre }}</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <small class="text-muted">{{ oeuvre.etat }}</small>
+                    </div>
+                   
+    
+    <a class="btn btn-primary" href="{{ path('app_oeuvre_show', {'id': oeuvre.id}) }}">Détails</a>
+    
+                </div>
+            </div>
+            
+        </div>
+        {% endfor %} 
+       
+    </div>
+</div>
+
+    
+                     
+
+                         </section>
+    </div>
+{% endblock %}

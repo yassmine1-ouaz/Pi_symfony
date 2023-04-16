@@ -1,0 +1,56 @@
+{% extends 'baseBack.html.twig' %}
+
+{% block title %}Oeuvre{% endblock %}
+
+{% block body %}
+<div style="display: flex;justify-content: center; padding:100px;"/>
+    
+
+    <table class="table" style="display: flex;justify-content: center; padding:100px;">
+      <h1>Oeuvre</h1>  
+      <tbody >
+            <tr>
+                <th>Id</th>
+                <td>{{ oeuvre.id }}</td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td>
+                <img src="{{ asset('/uploads/')~ oeuvre.image }}" width="250" height="150"></td>
+            </tr>
+            <tr>
+                <th>Titre </th>
+                <td>{{ oeuvre.titreOeuvre }}</td>
+            </tr>
+            <tr>
+                <th>Artiste </th>
+                <td>{{ oeuvre.artiste }}</td>
+            </tr>
+            <tr>
+                <th>Famille </th>
+                <td>{{ oeuvre.famille }}</td>
+            </tr>
+            <tr>
+                <th>Type </th>
+                <td>{{ oeuvre.categorieOeuvre }}</td>
+            </tr>
+            
+            <tr>
+                <th>Prix de vente </th>
+                <td>{{ oeuvre.prixOeuvre }}</td>
+            </tr>
+            <tr>
+                <th>Etat </th>
+                <td>{{ oeuvre.etat }}</td>
+            </tr>
+           
+        </tbody>
+    </table>
+<div>
+    <a class="btn btn-primary" href="{{ path('app_oeuvre_index') }}">retour a la liste</a>
+
+    <a class="btn btn-success" href="{{ path('app_oeuvre_edit', {'id': oeuvre.id}) }}">Modifier</a>
+ 
+    {{ include('oeuvre/_delete_form.html.twig') }}
+  </div>
+{% endblock %}

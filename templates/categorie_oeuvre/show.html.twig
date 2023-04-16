@@ -1,0 +1,35 @@
+{% extends 'baseback.html.twig' %}
+
+{% block title %}CategorieOeuvre{% endblock %}
+
+{% block body %}
+<h1>CategorieOeuvre</h1>
+
+<div style="display: flex;align-item: center;justify-content: center;margin-top: 205px; padding:50px;">
+
+    
+    <table class="table" style="display: flex;justify-content: center; padding:100px;">
+        <tbody>
+            <tr>
+                <th>#</th>
+                <td>{{ categorie_oeuvre.idCatOeuv }}</td>
+            </tr>
+            <tr>
+                <th>Type</th>
+                <td>{{ categorie_oeuvre.nomCatOeuv }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ categorie_oeuvre.descriptionCatOeuv }}</td>
+            </tr>
+        </tbody>
+   </table>
+<div>
+<a class="btn btn-primary" href="{{ path('app_categorie_oeuvre_index') }}">retour a la liste</a>
+
+    <a class="btn btn-success" href="{{ path('app_categorie_oeuvre_edit', {'idCatOeuv': categorie_oeuvre.idCatOeuv}) }}">Modifier</a>
+
+    {{ include('categorie_oeuvre/_delete_form.html.twig') }}
+    </div>
+ 
+{% endblock %}

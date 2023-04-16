@@ -1,0 +1,77 @@
+{% extends 'baseBack.html.twig' %}
+
+
+{% block title %}CategorieOeuvre{% endblock %}
+
+{% block body %}
+  <body>
+ 
+
+
+  <main id="main" class="main">
+
+    
+     <h1>Categories </h1>
+ <a href="{{ path('app_categorie_oeuvre_new') }}">Ajouter categorie</a>
+
+
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-12">
+
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Liste des categories</h5>
+              <p></p>
+
+              <!-- Table with stripped rows -->
+              <table class="table datatable">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                        <th scope="col">Type</th>
+                        <th scope="col">Description</th>
+                         <th  scope="col">actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                  
+                <tbody>
+                     {% for categorie_oeuvre in categorie_oeuvres %}
+         
+                      <tr>
+                        
+                       <td> {{ categorie_oeuvre.idCatOeuv }} </td>
+                       <td>{{ categorie_oeuvre.nomCatOeuv }}</td>
+                        <td>{{ categorie_oeuvre.descriptionCatOeuv }}</td>
+                       
+                <td>
+                     <a class="btn btn-primary" href="{{ path('app_categorie_oeuvre_show', {'idCatOeuv': categorie_oeuvre.idCatOeuv}) }}">Consulter</a>
+                    <a class="btn btn-success" href="{{ path('app_categorie_oeuvre_edit', {'idCatOeuv': categorie_oeuvre.idCatOeuv}) }}">Modifier</a>
+                  
+                  {{ include('categorie_oeuvre/_delete_form.html.twig') }}
+                
+                 </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">no records found</td>
+            </tr>
+        {% endfor %}
+
+                  </tr>
+                </tbody>
+              </table>
+              <!-- End Table with stripped rows -->
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+
+{% endblock %}

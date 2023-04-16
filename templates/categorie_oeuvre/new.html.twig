@@ -1,0 +1,13 @@
+{% extends 'baseBack.html.twig' %}
+
+{% block title %}Ajouter categorie{% endblock %}
+
+{% block body %}
+    <h1>Ajouter categorie</h1>
+
+    {{ include('categorie_oeuvre/_form.html.twig') }}
+
+    <div>
+    <a href="{{ path('app_categorie_oeuvre_index') }}">retour a la liste</a>
+ </div>
+{% endblock %}

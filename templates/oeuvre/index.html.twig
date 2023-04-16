@@ -1,0 +1,94 @@
+{% extends 'baseBack.html.twig' %}
+
+
+{% block title %}Oeuvre{% endblock %}
+
+{% block body %}
+   
+  <body>
+ 
+
+
+  <main id="main" class="main">
+
+    
+     <h1>Oeuvres </h1>
+    
+            
+
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-12">
+
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Liste des oeuvres</h5>
+              <p></p>
+
+              <!-- Table with stripped rows -->
+              <table class="table datatable">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                        <th scope="col">Image</th>
+                        <th scope="col">Titre</th>
+                        <th scope="col">Artiste</th>
+                        <th scope="col">Famille</th>
+                        <th scope="col">Type</th>
+                        <th scope="col">Prix</th>
+                        <th scope="col">Etat</th>
+                         <th  scope="col">actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                  
+                <tbody>
+                     {% for oeuvre in oeuvres %}
+         
+                      <tr>
+                        
+                       <td> {{ oeuvre.id }} </td>
+                          {% if oeuvre.image %}
+                          <td><img src="{{ asset('uploads/'~oeuvre.getImage ) }}" width="250" height="150"/></td>
+                             {% else %}
+                             <td><img src="{{ asset('uploads/'~"Not found.jpg" ) }}" width="250" height="150"></td>
+
+                            {% endif %}
+                           
+ 
+                        <td>{{ oeuvre.titreOeuvre }}</td>
+                        <td>{{ oeuvre.artiste }}</td>
+                       <td>{{ oeuvre.famille }}</td>
+                        <td>{{ oeuvre.categorieOeuvre }}</td>
+                        <td>{{ oeuvre.prixOeuvre }}</td>
+                        <td><span class="badge bg-warning">{{ oeuvre.etat }}</span></td>
+                       
+                    
+                <td>
+                    <a class="btn btn-primary" href="{{ path('app_oeuvre_show', {'id': oeuvre.id}) }}">Consulter</a>
+                    <a class="btn btn-success" href="{{ path('app_oeuvre_edit', {'id': oeuvre.id}) }}">Modifier</a>
+                    {{ include('oeuvre/_delete_form.html.twig') }}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">no records found</td>
+            </tr>
+        {% endfor %}
+
+                  </tr>
+                </tbody>
+              </table>
+              <!-- End Table with stripped rows -->
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+
+{% endblock %}
